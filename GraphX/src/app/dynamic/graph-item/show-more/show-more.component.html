@@ -1,0 +1,12 @@
+<!-- <p class="mt-2">{{ desct }}</p>
+ -->
+<p *ngIf="desct.length > 130">
+  {{ showMore ? desct : (desct | slice: 0:130) }}
+  <span *ngIf="!showMore">...</span>
+  <a href="javascript:;" *ngIf="!showMore" (click)="onShow()">[Show More]</a>
+  <a href="javascript:;" *ngIf="showMore" (click)="onShow()">[Show Less]</a>
+</p>
+
+<p *ngIf="desct.length <= 130">
+  {{ desct }}
+</p>

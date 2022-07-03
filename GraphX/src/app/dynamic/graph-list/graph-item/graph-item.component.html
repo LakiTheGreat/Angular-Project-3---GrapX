@@ -1,0 +1,26 @@
+<div class="card my-2">
+  <div class="row">
+    <div class="col-2">
+      <img src="{{ card.image }}" alt="slika" />
+    </div>
+    <div class="col-10">
+      <a class="link-item" (click)="cardClicked()">{{ card.title }}</a>
+      <a>{{ card.subtitle }}</a>
+      <app-show-more [desct]="card.description"></app-show-more>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="changeGrade('+')"
+        >
+          +
+        </button>
+        <input type="button" class="btn" [(ngModel)]="card.grade" />
+
+        <button type="button" class="btn btn-danger" (click)="changeGrade('-')">
+          -
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

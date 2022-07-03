@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-8">
+    <div class="row">
+      <div class="col-8">
+        <button
+          class="btn btn-primary mx-1"
+          [disabled]="params.page == 1"
+          (click)="previousPage()"
+        >
+          Previous
+        </button>
+        <button
+          class="btn btn-primary mx-1"
+          [disabled]="params.page >= cardList.count / params.pageSize"
+          (click)="nextPage()"
+        >
+          Next
+        </button>
+      </div>
+      <div class="col-4">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="setPageSize(5)"
+          >
+            5
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="setPageSize(10)"
+          >
+            10
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="setPageSize(20)"
+          >
+            20
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <app-graph-item
+          *ngFor="let item of cardList.results"
+          [card]="item"
+          (newCard)="putGraph($event)"
+          (cardIsClicked)="reciveId($event)"
+          >{{ item | json }}</app-graph-item
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="col-4">
+    <app-comments
+      [comments]="comments"
+      [commentId]="commentId"
+      [graph]="graph"
+    ></app-comments>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="col mt-5">
+  <form *ngIf="commentId > 0">
+    <input
+      type="text"
+      placeholder="Name"
+      class="form-control"
+      name="authorInput"
+      [(ngModel)]="komentar.author"
+    />
+    <textarea
+      [(ngModel)]="komentar.text"
+      name="textInput"
+      class="form-control mt-2"
+      placeholder="Comment"
+    ></textarea>
+    <button
+      type="submit"
+      (click)="createKomentar()"
+      [disabled]="commentId <= 0"
+      class="btn btn-primary mt-2"
+    >
+      Submit
+    </button>
+  </form>
+  <p *ngIf="commentId <= 0" class="fw-bold text-center">
+    Da biste videli komentare izaberite karticu sa leve strane!
+  </p>
+  <p *ngIf="commentId > 0" class="fw-bold text-center">
+    Izabrana kartica je: <br />
+    {{ graph.title }}
+  </p>
+
+  <div class="card mb-2" *ngFor="let comment of comments.results">
+    <div class="card-body">
+      <p class="card-title">
+        {{ comment.author }} {{ comment.date | date: "dd.MM.yyyy - HH:mm" }}h
+      </p>
+      <p>{{ comment.text }}</p>
+    </div>
+  </div>
+</div>
+<!-- {{ komentar | json }} -->
+<!-- {{ graph | json }} -->
+<!-- {{ commentId }} -->
